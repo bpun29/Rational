@@ -13,6 +13,8 @@ class Rational {
      */
     Rational() {
         // to be completed
+        this.numerator = 0;
+        this.denominator = 1;
     }
 
     /***
@@ -23,6 +25,8 @@ class Rational {
      */
     Rational(long numerator, long denominator) throws Illegal { 
         // to be completed
+        this.numerator = numerator;
+        this.denominator = denominator;
     }
 
     /***
@@ -71,6 +75,9 @@ class Rational {
      */
     public void multiply(Rational x) { 
         // to be completed
+        numerator = numerator * x.numerator;
+        denominator = denominator * x.denominator;
+        simplestForm();
     }
 
     /***
@@ -79,6 +86,9 @@ class Rational {
      */
     public void divide(Rational x) {
         // to be completed
+        numerator = numerator * x.denominator;
+        denominator = denominator * x.numerator;
+        simplestForm();
     }
 
     /***
@@ -88,7 +98,10 @@ class Rational {
      */
     public boolean equals(Object x) {
         // to be completed
-        return true; // TODO: This needs to be modified.
+        if(this == x) return true;
+        if (!(x instanceof Rational)) return false;
+        if(this.numerator*((Rational) x).denominator != this.denominator*((Rational) x).numerator) return false;
+        return true;
     }
 
     /***
@@ -99,6 +112,12 @@ class Rational {
      */
     public long compareTo(Object x) {
         // to be completed
+        if(this == x) return 0;
+        if(this.numerator*((Rational) x).denominator > this.denominator*((Rational) x).numerator) {
+            return 1;
+        }else if(this.numerator*((Rational) x).denominator == this.denominator*((Rational) x).numerator){
+            return 0;
+        }
         return -1; // TODO: this needs to be modified.
     }
 
@@ -108,7 +127,8 @@ class Rational {
      */
     public String toString() { 
         // to be completed
-        return ""; // TODO: This needs to be modified.
+        String s = numerator + "/" + denominator;
+        return s; // TODO: This needs to be modified.
     }
 
     public static void main(String[] args) {
